@@ -14,4 +14,16 @@
  */
 export function createObjectAccessor<T>(obj: T) {
     // 請在此處寫下你的程式碼
+    const store = JSON.parse(JSON.stringify(obj))
+
+    return {
+      get(key: string) {
+        return store[key]
+      },
+      set(key: string, value: any) {
+        store[key] = value
+        return store
+      }
+    }
+
 }
